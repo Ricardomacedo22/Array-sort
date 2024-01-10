@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <p id="demo12"></p>
+    <p id="demo13"></p>
+    <p id="demo14"></p>
+    <p id="demo15"></p>
+    <p id="demo16"></p>
+    <input id="input" type="number" value="" placeholder="numero"><button onclick="repetition()">Click to check</button>
+    <p id="demo17"></p>
+    <p id="demo18"></p>
+    <p id="demo19"></p>
+
+    
+
+</head>
+
+<body onload="baralho(), baralho_array5()">
+    <Script>
+        const Array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+
+//length da Array1          ??????????????
+console.log(Array1.length)
+document.getElementById("demo1").innerHTML = "length = " + Array1.length;
+
+//primeiro elemento
+console.log(Array1[0])
+document.getElementById("demo2").innerHTML = "Primeiro elemento = " + Array1[0];
+
+//último elemento
+console.log(Array1[Array1.length-1])
+document.getElementById("demo3").innerHTML = "Último elemento = " + Array1[Array1.length - 1];
+
+//numero de elementos      ??????????????
+console.log(Array1.length)
+document.getElementById("demo4").innerHTML = "Número de elementos = " + Array1.length;
+
+//alterar conteúdo
+Array1[0] = 9;
+console.log(Array1)
+document.getElementById("demo5").innerHTML = Array1;
+
+//retirar elementos do array(retirei o 9 e acrescentei o 1 para ficar a sequencia certa)
+  console.log(Array1.splice(0, 1, 1))
+  console.log(Array1)
+  document.getElementById("demo6").innerHTML = Array1;
+
+//listar o array
+     //decrescente
+     Array1.sort(function(a, b){return b - a});
+     document.getElementById("demo7").innerHTML = Array1;
+     console.log(Array1)
+
+     //crescente
+     Array1.sort(function(a, b){return a - b});
+     document.getElementById("demo8").innerHTML = Array1;
+     console.log(Array1)
+
+     //listar
+let text = "<ul>";
+for (let i = 0; i < Array1.length; i++) {
+  text += "<li>" + Array1[i] + "</li>";
+}
+text += "</ul>";
+
+//document.getElementById("demo9").innerHTML = text;
+
+
+//baralhar o array
+function baralho() {
+     for (let i = Array1.length -1; i > 0; i--) {
+  let j = Math.floor(Math.random() * (i+1));
+  let k = Array1[i];
+  Array1[i] = Array1[j];
+  Array1[j] = k;
+}
+console.log(Array1)
+document.getElementById("demo10").innerHTML = "baralho = " + Array1;
+}
+
+//listar os array de duas em duas posições
+function Array2() {
+   let range = [];
+    for (let i = 0; i <= 99; i++) range[i++] = i + 1;
+    return range;
+}
+document.getElementById("demo11").innerHTML = Array2();
+console.log(Array2())
+
+
+//mostrar soma, média, mediana, máximo e minimo do array
+   //soma
+      const reducer = (acumulado, proximo) => acumulado + proximo;
+          console.log(Array1.reduce(reducer));
+          document.getElementById("demo12").innerHTML = "Soma = " + Array1.reduce(reducer);
+
+   //média
+    let media = Array1.reduce(reducer) / 100;
+    console.log(media);
+    document.getElementById("demo13").innerHTML =  "média = " + media;
+
+   //mediana (como é uma sequencia com length par)
+    let mediana = (((100 / 2) + ((100 / 2) + 1)) / 2);
+    document.getElementById("demo14").innerHTML =  "mediana = " + mediana;
+
+   //máximo
+   document.getElementById("demo15").innerHTML = "máximo = " + myArrayMax(Array1);
+
+    function myArrayMax(array1) {
+       let len = array1.length;
+       let max = -Infinity;
+           while (len--) {
+              if (array1[len] > max) {
+                  max = array1[len];
+                  }
+             }
+            return max;
+        }
+
+   //minimo
+   document.getElementById("demo16").innerHTML = "mínimo = " + myArrayMin(Array1);
+
+function myArrayMin(array1) {
+   let len = array1.length;
+   let min = Infinity;
+       while (len--) {
+          if (array1[len] < min) {
+              min = array1[len];
+              }
+         }
+        return min;
+    }
+
+
+//verificar se há números repetidos dado um número inserido
+function repetition() {
+    var numero_escolhido = document.getElementById("input").value;
+
+if (numero_escolhido <= 100 && numero_escolhido >= 0 ) {
+    alert("número repetido")
+} else if (numero_escolhido > 100 || numero_escolhido < 0) {
+    alert("número disponível")
+}
+}
+
+//verificar se há números repetidos
+     //não é possivel ter números repetidos desta forma
+
+
+    </Script>
+<body1>
+    <script>
+        //preencher um array com números aleatórios entre -100 e 100 e listar números > 0 verde e < 0 vermelho
+    const array_neg = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16, -17, -18, -19, -20, -21, -22, -23, -24, -25, -26, -27, -28, -29, -30, -31, -32, -33, -34, -35, -36, -37, -38, -39, -40, -41, -42, -43, -44, -45, -46, -47, -48, -49, -50, -51, -52, -53, -54, -55, -56, -57, -58, -59, -60, -61, -62, -63, -64, -65, -66, -67, -68, -69, -70, -71, -72, -73, -74, -75, -76, -77, -78, -79, -80, -81, -82, -83, -84, -85, -86, -87, -88, -89, -90, -91, -92, -93, -94, -95, -96, -97, -98, -99, -100]
+
+const array5 = Array1.concat(array_neg)
+console.log(array5);
+
+function baralho_array5() {
+ for (let i = array5.length -1; i > 0; i--) {
+let j = Math.floor(Math.random() * (i+1));
+let k = array5[i];
+array5[i] = array5[j];
+array5[j] = k;
+}
+console.log(array5.slice(100))
+document.getElementById("demo17").innerHTML = array5.slice(100);
+
+
+var array6 = array5.slice(100)
+
+// negativos
+
+let text1 = "<ul>";
+for (let i = 0; i < 100; i++) {
+text1 += "<li>" + array6.sort(function(a, b){return a - b})[i] + "</li>";
+if (array6.sort(function(a, b){return a - b})[i] < 0) {
+    document.getElementById("demo19").innerHTML = text1;
+    document.getElementById("demo19").style.color = "red"
+}
+}
+text1 += "</ul>";
+
+//positivos
+
+let text2 = "<ul>";
+for (let i = 0; i < 100; i++) {
+text2 += "<li>" + array6.sort(function(a, b){return b - a})[i * 1] + "</li>";
+if (array6.sort(function(a, b){return b - a})[i] > 0) {
+    document.getElementById("demo18").innerHTML = text2;
+    document.getElementById("demo18").style.color = "green"
+}
+}
+text2 += "</ul>";
+
+
+
+}
+    </script>
+   </body1>
+</body>
+</html>
